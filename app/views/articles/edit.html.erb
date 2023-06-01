@@ -1,10 +1,6 @@
-<h1>Editing article</h1>
-
+<h1 class="text-center mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Edit Article</h1>
 <%= render "form", article: @article %>
-
 <br>
-
-<div>
-  <%= link_to "Show this article", @article %> |
-  <%= link_to "Back to articles", articles_path %>
+<div class="m-auto block max-w-lg p-6 pt-0">
+  <%= link_to "Back to articles", articles_path, class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
 </div>
