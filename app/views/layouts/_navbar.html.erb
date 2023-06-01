@@ -11,28 +11,27 @@
       <%= link_to "New article", new_article_path, class: "text-sm font-semibold leading-6 text-gray-900 hover:text-sky-700" %>
       <%= link_to "About", about_path, class: "text-sm font-semibold leading-6 text-gray-900 hover:text-sky-700" %>
     </div>
-    <div class="md:flex lg:gap-x-12">
-      <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" >Dropdown button <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
-      <!-- Dropdown menu -->
-      <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-          <li>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
-          </li>
-          <li>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-          </li>
-          <li>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
-          </li>
-          <li>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
-          </li>
-        </ul>
-      </div>
-    </div>
     <div class="md:flex lg:flex-1 lg:justify-end">
-      <a href="#" class="text-sm font-semibold leading-6 text-gray-900 hover:text-sky-700">Log in <span aria-hidden="true">&rarr;</span></a>
+      <div class="relative inline-block text-left" data-controller="dropdown">
+        <div>
+          <button type="button" class="inline-flex w-full justify-center gap-x-1.5
+          px-3 py-2 text-sm font-semibold text-gray-900 border-none hover:text-sky-700" id="menu-button" aria-expanded="true" aria-haspopup="true" data-action="click->dropdown#click">
+            Options
+            <svg class="-mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+            </svg>
+          </button>
+        </div>
+        <div class="invisible absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" data-dropdown-target="item">
+          <div class="py-1 pb-4" role="none">
+            <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+            <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:text-sky-700" role="menuitem" tabindex="-1" id="menu-item-0">Account settings</a>
+            <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:text-sky-700" role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
+            <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:text-sky-700" role="menuitem" tabindex="-1" id="menu-item-2">License</a>
+            <a href="#" class="text-sm text-gray-700 font-bold px-4 hover:text-sky-700">Log in <span aria-hidden="true">&rarr;</span></a>
+          </div>
+        </div>
+      </div>
     </div>
   </nav>
 </header>
