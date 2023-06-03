@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full">
   <head>
     <title>AlphaBlog</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -8,8 +8,8 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
-  <body class="relative">
-    <main class="container px-5 mx-auto">
+  <body class="relative flex flex-col h-full">
+    <main class="container px-5 mx-auto grow">
       <%= render 'layouts/navbar' %>
       <% flash.each do |type, msg| %>
         <% css_class = type == 'notice' ? 'bg-blue-500' : 'bg-red-600' %>
@@ -22,5 +22,6 @@
         <%= yield %>
       </div>
     </main>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
