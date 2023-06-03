@@ -9,9 +9,9 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
   <body>
-    <main class="container mx-auto px-5">
+    <main class="container px-5 mx-auto">
       <%= render 'layouts/navbar' %>
-      <div class="container max-auto px-8">
+      <div class="container p-6 pt-0 mx-auto max-w-7xl lg:px-8">
         <%= yield %>
       </div>
     </main>
