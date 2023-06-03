@@ -17,6 +17,12 @@
         <%= render 'layouts/input_errors', errors: @user.errors.messages[:email] %>
       <% end %>
     </div>
+    <% if !@user.new_record? %>
+      <div class="mb-6">
+        <%= form.label :image, class: "block mb-2 text-sm font-medium text-gray-900" %>
+        <%= form.text_field :image, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5", placeholder: :image %>
+      </div>
+    <% end %>
     <div class="relative mb-6">
       <%= form.label :password, class: "block mb-2 text-sm font-medium text-gray-900 #{'text-red-600' if @user.errors.messages[:password].any? }" %>
       <%= form.password_field :password, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
