@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       flash.notice = "Changes were saved!"
-      redirect_to @user
+      redirect_to edit_user_path(@user)
     else
       render :edit, status: :unprocessable_entity
     end
