@@ -1,7 +1,12 @@
-<p style="color: green"><%= notice %></p>
 <%= render @article, trunc: false %>
-<div class="inline-flex rounded-md shadow-sm" role="group">
-  <%= link_to "Edit this article", edit_article_path(@article), class: "px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-l-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white" %>
-  <%= link_to "Back to articles", articles_path, class: "px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border-t border-b border-gray-900 hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white" %>
-  <%= button_to "Destroy this article", @article, method: :delete, class: "px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-r-md hover:bg-red-600 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white" %>
-</div>
+<% if current_user[:id] == @article.user[:id] %>
+  <div class="inline-flex rounded-md shadow-sm" role="group">
+    <%= link_to "Edit this article", edit_article_path(@article), class: "px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-l-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white" %>
+    <%= link_to "Back to articles", articles_path, class: "px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border-t border-b border-gray-900 hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white" %>
+    <%= button_to "Destroy this article", @article, method: :delete, class: "px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-r-md hover:bg-red-600 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white" %>
+  </div>
+<% else %>
+  <div class="block py-6 pt-0 m-auto">
+    <%= link_to "Back", :back, class: "font-medium text-blue-600  hover:underline" %>
+  </div>
+<% end %>

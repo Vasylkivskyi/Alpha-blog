@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
+  before_action :is_author?, only: [:edit, :update, :destroy]
 
   # GET /articles or /articles.json
   def index
@@ -22,7 +23,7 @@ class ArticlesController < ApplicationController
   # POST /articles or /articles.json
   def create
     @article = Article.new(article_params)
-    @article.user = User.first
+    @article.user = User.find(session[:user_id])
     respond_to do |format|
       if @article.save
         format.html { redirect_to article_url(@article), notice: "Article was successfully created." }
@@ -61,6 +62,10 @@ class ArticlesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.find(params[:id])
+    end
+
+    def is_author?
+      redirect_to root_path unless @article.user == current_user
     end
 
     # Only allow a list of trusted parameters through.
