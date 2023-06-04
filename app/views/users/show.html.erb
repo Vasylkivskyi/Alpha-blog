@@ -1,6 +1,6 @@
 <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-center text-gray-900 md:text-5xl lg:text-6xl"><%= @user.username %></h1>
 <%= render 'image' %>
-<p class="mx-auto mt-8 text-2xl font-bold text-center text-gray-900"><%= pluralize(@articles.count, 'Article') %></p>
+<p class="mx-auto mt-8 text-2xl font-bold text-center text-gray-900"><%= pluralize(@user.articles.count, 'Article') %></p>
 <div id="articles" class="mt-12">
   <% @articles.each do |article| %>
     <%= render article, trunc: true %>
@@ -9,4 +9,5 @@
     </p>
     <hr class="h-px my-12 bg-transparent border-t-0 opacity-25 bg-gradient-to-r from-transparent via-neutral-500 to-transparent dark:opacity-100" />
   <% end %>
+  <%= render 'layouts/pagination', articles: @articles %>
 </div>
