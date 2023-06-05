@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
 include ApplicationHelper
   before_action :set_article, only: %i[ show edit update destroy ]
-  before_action :is_author?, only: [:edit, :update, :destroy]
+  before_action :can_edit?, only: [:edit, :update, :destroy]
 
   # GET /articles or /articles.json
   def index
@@ -65,8 +65,8 @@ include ApplicationHelper
       @article = Article.find(params[:id])
     end
 
-    def is_author?
-      redirect_to root_path unless @article.user == current_user
+    def can_edit?
+      redirect_to root_path unless @article.user == current_user || current_user.admin?
     end
 
     # Only allow a list of trusted parameters through.
