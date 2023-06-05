@@ -1,3 +1,6 @@
 <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-center text-gray-900 md:text-5xl lg:text-6xl">Account</h1>
 <%= render 'image' %>
 <%= render "form" %>
+<hr class="h-px my-12 bg-transparent border-t-0 opacity-25 bg-gradient-to-r from-transparent via-neutral-500 to-transparent dark:opacity-100" />
+<h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-center text-red-600 md:text-3xl lg:text-4xl">Danger zone</h1>
+<%= link_to "Delete account", current_user, class: "border border-red-600 rounded-md text-red-600 hover:text-red-800 hover:border-red-900 px-6 py-3", data: { "turbo-method": :delete, turbo_confirm: 'Are you sure?' } %>

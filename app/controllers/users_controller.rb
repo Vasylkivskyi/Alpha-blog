@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 include ApplicationHelper
-  before_action :set_user, only: [:edit, :update] #:destroy]
+  before_action :set_user, only: [:edit, :update, :destroy]
   def new
     @user = User.new
   end
@@ -30,6 +30,13 @@ include ApplicationHelper
   def show
     @user = User.find(params[:id])
     @articles = @user.articles.order(created_at: :desc).page params[:page]
+  end
+
+  def destroy
+    @user.destroy
+    session[:user_id] = nil
+    flash.notice = "User was successfully deleted"
+    redirect_to login_path
   end
 
   private
