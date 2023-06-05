@@ -8,9 +8,9 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
-  <body class="relative flex flex-col h-full">
-    <main class="container px-5 mx-auto grow">
-      <%= render 'layouts/navbar' %>
+  <body class="relative flex flex-col items-center h-full">
+    <%= render 'layouts/navbar' %>
+    <main class="w-full px-2 sm:px-6 grow sm:max-w-3xl">
       <% flash.each do |type, msg| %>
         <% css_class = type == 'notice' ? 'bg-blue-500' : 'bg-red-600' %>
         <div class="absolute flex items-center px-4 py-3 text-sm font-bold text-white <%= css_class %> bottom-7 right-3 animate-fade opacity-0" role="alert">
@@ -18,9 +18,7 @@
           <p><%= msg %></p>
         </div>
       <% end %>
-      <div class="container p-6 pt-0 mx-auto max-w-7xl lg:px-8">
-        <%= yield %>
-      </div>
+      <%= yield %>
     </main>
     <%= render 'layouts/footer' %>
   </body>
