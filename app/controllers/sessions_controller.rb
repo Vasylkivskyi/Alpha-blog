@@ -13,7 +13,6 @@ class SessionsController < ApplicationController
       flash[:error] = "Login is invalid!"
       render :new, status: :unprocessable_entity
     end
-
   end
 
   def destroy
