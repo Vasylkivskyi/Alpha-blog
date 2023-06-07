@@ -4,6 +4,7 @@ class CategoriesController < ApplicationController
   end
 
   def index
+    @categories = Category.order(created_at: :desc).page params[:page]
   end
 
   def new
@@ -15,7 +16,6 @@ class CategoriesController < ApplicationController
     if @category.save
       redirect_to @category
     else
-      puts "=======>", @category.errors.messages.inspect
       render :new, status: :unprocessable_entity
     end
   end

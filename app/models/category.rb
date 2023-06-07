@@ -9,5 +9,5 @@ class Category < ApplicationRecord
               maximum: 20
             }
 
-  private
+  paginates_per 10
 end
