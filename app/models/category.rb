@@ -9,5 +9,7 @@ class Category < ApplicationRecord
               maximum: 20
             }
 
+  has_many :article_categories
+  has_many :articles, through: :article_categories
   paginates_per 10
 end

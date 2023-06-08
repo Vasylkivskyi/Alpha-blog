@@ -3,5 +3,8 @@ class Article < ApplicationRecord
   validates :description, presence: true, length: { minimum: 10, maximum: 1000 }
 
   belongs_to :user
+
+  has_many :article_categories
+  has_many :categories, through: :article_categories
   paginates_per 5
 end
