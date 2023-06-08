@@ -1,24 +1,41 @@
-# README
+# Alpha blog
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Simple blog app created with Ruby on Rails
 
-Things you may want to cover:
+### Technologies were used:
 
-* Ruby version
+- HTML
+- Tailwind
+- Ruby
+- Ruby on Rails
+- Javascript
 
-* System dependencies
+## Installation
 
-* Configuration
+Clone the repo
 
-* Database creation
+Install the dependencies and gems
 
-* Database initialization
+```sh
+git clone git@github.com:Vasylkivskyi/Alpha-blog.git
+```
 
-* How to run the test suite
+```sh
+cd Alpha-blog
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+```sh
+bundle insall
+```
 
-* Deployment instructions
+Run migrations
 
-* ...
+```sh
+rails db:migrate
+```
+
+Run the app
+
+```sh
+./bin/dev
+```
