@@ -1,4 +1,4 @@
 <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-center text-gray-900 md:text-5xl lg:text-6xl">Edit Article</h1>
-<%= render "form", article: @article %>
+<%= render "form", article: @article, categories: @categories %>
 <br>
 <%= link_to "Back to articles", articles_path, class: "font-medium text-blue-600 hover:underline" %>
