@@ -2,7 +2,6 @@ class ArticlesController < ApplicationController
   include ApplicationHelper
 
   before_action :set_article, only: %i[show edit update destroy]
-  before_action :set_categories, only: %i[new edit]
   before_action :can_edit?, only: %i[edit update destroy]
 
   # GET /articles or /articles.json
@@ -80,10 +79,6 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
-  def set_categories
-    @categories = Category.all
-  end
-
   def can_edit?
     unless @article.user == current_user || current_user.admin?
       redirect_to root_path
@@ -92,6 +87,6 @@ class ArticlesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def article_params
-    params.require(:article).permit(:title, :description, :category_ids)
+    params.require(:article).permit(:title, :description, category_ids: [])
   end
 end
