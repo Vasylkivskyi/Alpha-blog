@@ -1,5 +1,11 @@
 <article id="<%= dom_id article %>" class="mb-5 format lg:format-lg dark:format-invert">
-  <h1 class="text-center sm:text-left <%= trunc ? "text-3xl md:text-3xl lg:text-3xl" : "text-5xl md:text-5xl lg:text-5xl" %> mb-4 font-extrabold tracking-tight leading-none text-gray-900 "><%= article.title %></h1>
+  <% if trunc %>
+    <%= link_to article, class: "hover:underline" do %>
+      <h1 class="text-center sm:text-left <%= trunc ? "text-3xl md:text-3xl lg:text-3xl" : "text-5xl md:text-5xl lg:text-5xl" %> mb-4 font-extrabold tracking-tight leading-none text-gray-900 "><%= article.title %></h1>
+    <% end %>
+  <% else %>
+    <h1 class="text-center sm:text-left <%= trunc ? "text-3xl md:text-3xl lg:text-3xl" : "text-5xl md:text-5xl lg:text-5xl" %> mb-4 font-extrabold tracking-tight leading-none text-gray-900 "><%= article.title %></h1>
+  <%end%>
   <p class="lead"><%= trunc ? article.description.truncate(300) : simple_format(article.description) %></p>
   <p class="inline-flex items-center mt-3 text-sm text-slate-400">
     <span class="inline-flex items-center mr-1 italic font-bold">
