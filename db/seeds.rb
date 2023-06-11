@@ -41,7 +41,7 @@ users.each do |u|
           number: rand(100..200),
           supplemental: false,
           exclude_words: nil
-        ).join('\n'),
+        ).join(" "),
       category_ids: articleCategories,
       user_id: users[rand(users.length)].id
     )
