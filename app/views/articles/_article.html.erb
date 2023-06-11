@@ -7,7 +7,16 @@
     <h1 class="text-center sm:text-left <%= trunc ? "text-3xl md:text-3xl lg:text-3xl" : "text-5xl md:text-5xl lg:text-5xl" %> mb-4 font-extrabold tracking-tight leading-none text-gray-900 "><%= article.title %></h1>
   <%end%>
   <p class="lead"><%= trunc ? article.description.truncate(300) : simple_format(article.description) %></p>
-  <p class="inline-flex items-center mt-3 text-sm text-slate-400">
+  <% if !article.categories.empty? %>
+    <div class="flex mt-6">
+      <% article.categories.each do |c| %>
+        <%= link_to category_path(c), class: "mr-2" do %>
+          <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded hover:bg-green-300 hover:cursor-pointer"><%= c.name%></span>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="inline-flex items-center mt-3 text-sm text-slate-400">
     <span class="inline-flex items-center mr-1 italic font-bold">
       <%= link_to user_path(article.user[:id]), class: "hover:underline hover:text-blue-600" do %>
         <span><%= article.user.username %></span>
@@ -15,5 +24,5 @@
       <% end %>
     </span>
     <%= time_ago_in_words article.created_at %> ago
-  </p>
+  </div>
 </article>
