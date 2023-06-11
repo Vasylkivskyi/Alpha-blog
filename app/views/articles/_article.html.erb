@@ -7,12 +7,10 @@
     <h1 class="text-center sm:text-left <%= trunc ? "text-3xl md:text-3xl lg:text-3xl" : "text-5xl md:text-5xl lg:text-5xl" %> mb-4 font-extrabold tracking-tight leading-none text-gray-900 "><%= article.title %></h1>
   <%end%>
   <p class="lead"><%= trunc ? article.description.truncate(300) : simple_format(article.description) %></p>
-  <% if !article.categories.empty? %>
+  <% if article.categories.any? %>
     <div class="flex mt-6">
-      <% article.categories.each do |c| %>
-        <%= link_to category_path(c), class: "mr-2" do %>
-          <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded hover:bg-green-300 hover:cursor-pointer"><%= c.name%></span>
-        <% end %>
+      <% article.categories.each do |category| %>
+        <%= render category %>
       <% end %>
     </div>
   <% end %>

@@ -7,6 +7,7 @@ class ArticlesController < ApplicationController
   # GET /articles or /articles.json
   def index
     @articles = Article.order(created_at: :desc).page params[:page]
+    @articles_count = Article.all.size
   end
 
   # GET /articles/1 or /articles/1.json
