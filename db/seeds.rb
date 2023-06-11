@@ -30,6 +30,10 @@ end
 
 users.each do |u|
   10.times do
+    articleCategories = []
+    rand(2..6).times do
+      articleCategories << categories[rand(categories.length)].id
+    end
     Article.create(
       title: Faker::Lorem.unique.sentence,
       description:
@@ -38,7 +42,7 @@ users.each do |u|
           supplemental: false,
           exclude_words: nil
         ).join('\n'),
-      category_ids: Array.new(rand(5), categories[rand(categories.length)].id),
+      category_ids: articleCategories,
       user_id: users[rand(users.length)].id
     )
   end
