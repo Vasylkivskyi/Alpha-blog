@@ -1,17 +1,5 @@
 <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-center text-gray-900 md:text-5xl lg:text-6xl">Create new Category</h1>
 <p class="mb-6 text-lg font-normal text-center text-gray-500 lg:text-xl sm:px-16">Here you can create articles categories for articles sorting</p>
-<%= form_with(model: @category) do |form| %>
-  <div class="relative mb-6" >
-    <%= form.label :name, "Category name", class: "block mb-2 text-sm font-medium text-gray-900
-      #{'text-red-600' if @category.errors.messages[:name].any? }" %>
-    <%= form.text_field :name, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 #{'border-red-600' if @category.errors.messages[:name].any? }", placeholder: "Category name" %>
-    <% if @category.errors.messages[:name].any? %>
-      <%= render 'layouts/input_errors', errors: @category.errors.messages[:name] %>
-    <% end %>
-  </div>
-  <div>
-    <%= form.submit class: "text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"%>
-  </div>
-<% end %>
+<%= render 'form' %>
 <br>
-<%= link_to "Back to articles", articles_path, class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
+<%= link_to "Back", :back, class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" %>

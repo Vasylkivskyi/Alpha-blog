@@ -1,7 +1,12 @@
 <h1 class="mb-2 text-4xl font-extrabold leading-none tracking-tight text-center text-gray-900 md:text-4xl lg:text-5xl">
   <%= @category.name %>
 </h1>
-<h3 class="mb-8 text-xl text-center text-slate-600"><%= pluralize(@category.articles.count, 'article')%></h3>
+<h3 class="mb-3 text-xl text-center text-slate-600"><%= pluralize(@category.articles.count, 'article')%></h3>
+<% if logged_in? &&  current_user.admin? %>
+  <div class="flex justify-center mb-8">
+    <%= render 'buttons', category: @category%>
+  </div>
+<% end %>
 <div>
   <% @articles.each do |article| %>
     <%= render 'articles/article', article: article, trunc: true %>

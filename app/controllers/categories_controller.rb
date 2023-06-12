@@ -2,6 +2,7 @@ class CategoriesController < ApplicationController
   include ApplicationHelper
 
   before_action :require_admin, except: %i[index show]
+  before_action :set_category, only: %i[edit update destroy]
   def show
     @category = Category.find(params[:id])
     @articles = @category.articles.order(created_at: :desc).page params[:page]
@@ -24,7 +25,28 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def edit
+    @category = Category.find(params[:id])
+  end
+
+  def update
+    if (@category.update(category_params))
+      redirect_to categories_path, notice: "Category was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @category.destroy
+    redirect_to categories_path, notice: "Category was successfully destroyed."
+  end
+
   private
+
+  def set_category
+    @category = Category.find(params[:id])
+  end
 
   def category_params
     params.require(:category).permit(:name)

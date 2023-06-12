@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
 
   # categories
-  resources :categories, except: [:destroy]
+  resources :categories
 
   # root
   root "articles#index"
