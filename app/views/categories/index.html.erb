@@ -1,12 +1,19 @@
 <div class="flex flex-col h-full">
   <div class="flex flex-col grow">
     <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-tight text-center text-gray-900 md:text-4xl lg:text-5xl">Latest categories</h1>
-    <ul class="w-full mb-8 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg">
+    <ul class="w-full mb-8 text-sm font-medium text-gray-900 bg-white border border-r-0 border-gray-200 rounded-lg">
       <% @categories.each do |category| %>
         <%= link_to category_path(category), class: "" do %>
-          <li class="flex justify-between w-full px-4 py-2 border-b border-gray-200 hover:underline hover:bg-slate-100">
+          <li class="flex items-center justify-between w-full pl-4 border border-gray-200 rounded-r-lg hover:bg-slate-100">
             <div><%= category.name %></div>
-            <div><%= pluralize(category.articles.count, 'article')%></div>
+            <div class="flex items-center">
+              <%= pluralize(category.articles.count, 'article')%>
+              <div class="inline-flex items-center ml-3 -my-[1px] rounded-md sm:justify-self-center" role="group">
+                <%= link_to "Edit", edit_category_path(category), class: "px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-l-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white" %>
+
+                <%= button_to "Destroy", category, method: :delete, class: "px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-r-md hover:bg-red-600 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white" %>
+              </div>
+            </div>
           </li>
         <% end %>
       <% end %>
